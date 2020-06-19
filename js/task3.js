@@ -15,15 +15,17 @@ const images = [
     alt: 'Group of Horses Running',
   },
 ];
-const imgAdd = images.map(item => {
-  const listItemRef = document.createElement('li');
-  listItemRef.classList.add('gallery-list-item');
-  const imgRef = document.createElement('img');
-  imgRef.setAttribute('src', item.url);
-  imgRef.setAttribute('alt', item.alt);
-  listItemRef.appendChild(imgRef);
-  return listItemRef;
-});
+const imgGalleryRef = document.querySelector('#gallery');
 
-const imgGallery = document.querySelector('#gallery');
-imgGallery.append(...imgAdd);
+images.forEach(galleryItem => {
+  imgGalleryRef.insertAdjacentHTML(
+    'beforeend',
+    `<li class="gallery-list-item">
+      <img
+        class="gallery__image"
+        src="${galleryItem.url}"
+        alt="${galleryItem.alt}"
+      />
+    </li>`,
+  );
+});
